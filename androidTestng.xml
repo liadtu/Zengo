@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Belong app">
+    <listeners>
+        <listener class-name="utilities.ListenerClass"/>
+    </listeners>
+
+    <test name="Zengo app - Android platform">
+        <parameter name="platform" value="AndroidEmulator"/>
+        <classes>
+            <class name="zengoApp.test.MainTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
