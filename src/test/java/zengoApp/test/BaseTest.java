@@ -4,12 +4,10 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.qameta.allure.Step;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,11 +17,11 @@ public class BaseTest {
 
     AppiumDriver<MobileElement> driver;
 
-    @Parameters({"platform"})
+    //    @Parameters({"platform"})
     @BeforeClass
-    public void setup(ITestContext testContext, String platform) throws IOException {
+    public void setup(ITestContext testContext) throws IOException {
         DesiredCapabilities cap = new DesiredCapabilities();
-
+        String platform = "Android";
         switch (platform) {
             case "iOS":
                 cap.setCapability("platformName", "iOS");
@@ -45,6 +43,7 @@ public class BaseTest {
                 cap.setCapability("automationName", "UiAutomator2");
                 cap.setCapability("appActivity", "com.zengo.MainActivity");
                 cap.setCapability("appPackage", "com.zengo.wallet");
+                cap.setCapability("sauceLabsImageInjectionEnabled", true);
 
                 driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), cap);
 

@@ -14,17 +14,20 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
-    @AndroidFindBy(className = "android.view.ViewGroup > android.widget.Button")
+    @AndroidFindBy(className = "android.widget.Button")
     @iOSXCUITFindBy()
     protected List<MobileElement> tabList;
 
 
     @Step("Click on tab from the menu")
     public void clickOnTab(String tab) {
+        waitForElementClickable(tabList.get(0));
         for (MobileElement el : tabList) {
             if (getText(el).equals(tab)) {
                 click(el);
                 break;
+            } else {
+                System.out.println("The tab is not found");
             }
         }
     }

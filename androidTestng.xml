@@ -5,11 +5,11 @@
         <listener class-name="utilities.ListenerClass"/>
     </listeners>
 
-    <test name="Zengo app - Android platform">
-        <parameter name="platform" value="AndroidEmulator"/>
-        <classes>
-            <class name="zengoApp.test.MainTest"/>
-        </classes>
-    </test> <!-- Test -->
+<!--    <test name="Zengo app - Android platform">-->
+<!--        <parameter name="platform" value="Android"/>-->
+<!--        <classes>-->
+<!--            <class name="zengoApp.test.MainTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
 
 </suite> <!-- Suite -->

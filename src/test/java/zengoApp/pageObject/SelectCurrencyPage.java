@@ -5,11 +5,10 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.List;
 
-public class SelectCurrencyPage extends BasePage{
+public class SelectCurrencyPage extends BasePage {
     public SelectCurrencyPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
@@ -17,21 +16,24 @@ public class SelectCurrencyPage extends BasePage{
     @AndroidFindBy(xpath = "//android.view.View[@text='Select Currency']")
     @iOSXCUITFindBy()
     protected MobileElement selectCurrencyTitle;
-    @AndroidFindBy(className = "android.view.ViewGroup")
+    @AndroidFindBy(xpath = "/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup")
     @iOSXCUITFindBy()
     protected List<MobileElement> currencyList;
 
     @Step("Return the text of select currency title")
-    public String selectCurrencyTitle(){
+    public String selectCurrencyTitle() {
         return getText(selectCurrencyTitle);
     }
 
     @Step("Choose currency from the list")
-    public void chooseCurrency(String currency){
-        for (MobileElement el: currencyList){
+    public void chooseCurrency(String currency) {
+        waitForElementVisibility(currencyList.get(0));
+        for (MobileElement el : currencyList) {
             if (getText(el).equals(currency)) {
                 click(el);
                 break;
+            } else {
+                System.out.println("The currency is not found");
             }
         }
     }

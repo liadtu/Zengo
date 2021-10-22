@@ -45,8 +45,8 @@ public class BasePage {
         driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action", "search"));
     }
 
-    protected boolean isDisplayed(MobileElement el) {
-        return el.isDisplayed();
+    protected boolean isEnable(MobileElement el) {
+        return el.isEnabled();
     }
 
     public void swipe(int startX, int startY, int endX, int endY) {
