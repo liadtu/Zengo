@@ -29,7 +29,7 @@ public class BasePage {
     }
 
     protected void fillText(MobileElement el, String text) {
-        waitForElementClickable(el);
+        waitForElementVisibility(el);
         el.clear();
         el.sendKeys(text);
         clickEnter();

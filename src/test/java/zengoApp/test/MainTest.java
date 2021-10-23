@@ -7,17 +7,28 @@ import zengoApp.pageObject.*;
 
 public class MainTest extends BaseTest {
 
+    AuthenticationPage authenticationPage;
     MainPage mainPage;
     ActionsPage actionsPage;
     SellPage sellPage;
     SelectCurrencyPage selectCurrencyPage;
     AmountPage amountPage;
 
+
     @Test(priority = 1, description = "Home task")
     @Description("Home task - test")
     public void homeTask() throws InterruptedException {
+        Thread.sleep(20000);
+//        Activity activity = new Activity(settingsAppPackageName, settingsAppActivityName);
+//        ((AndroidDriver<MobileElement>) driver).startActivity(activity);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//
+//        authenticationPage.typeAuthenticationCode("924799");
+//
+//        activity = new Activity(zengoAppPackageName, zengoAppActivityName);
+//        ((AndroidDriver<MobileElement>) driver).startActivity(activity);
+
         // Click on 'Actions' tab
-        Thread.sleep(10000);
         mainPage.clickOnTab("Actions");
         // Check that the user enter to actions screen
         Assert.assertEquals(actionsPage.actionTitle(), "Actions");
@@ -28,11 +39,11 @@ public class MainTest extends BaseTest {
         // Click on bitcoin
         sellPage.clickOnBitcoinButton();
         // Check that the user enter to select currency screen
-        Assert.assertEquals(selectCurrencyPage.selectCurrencyTitle(),"Select Currency");
+        Assert.assertEquals(selectCurrencyPage.selectCurrencyTitle(), "Select Currency");
         // Click on 'GBP' currency
         selectCurrencyPage.chooseCurrency("GBP");
         // Check that the user enter to amount screen
-        Assert.assertEquals(amountPage.amountTitle(),"Enter Amount");
+        Assert.assertEquals(amountPage.amountTitle(), "Enter Amount");
         // Get the text of usd amount
         String usd = amountPage.usdAmount();
         // Click on switch currency button
@@ -40,7 +51,7 @@ public class MainTest extends BaseTest {
         // Get the text of coin amount
         String coin = amountPage.coinAmount();
         // Check that the currency change after the user clicks to switch currency
-        Assert.assertNotEquals(usd,coin);
+        Assert.assertNotEquals(usd, coin);
         // Click on 50%
         amountPage.clickOnKeypadButton("50%");
         // Check that the Minimum: 0.001 BTC button is disable
