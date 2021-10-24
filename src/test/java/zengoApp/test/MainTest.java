@@ -7,7 +7,6 @@ import zengoApp.pageObject.*;
 
 public class MainTest extends BaseTest {
 
-    AuthenticationPage authenticationPage;
     MainPage mainPage;
     ActionsPage actionsPage;
     SellPage sellPage;
@@ -18,15 +17,12 @@ public class MainTest extends BaseTest {
     @Test(priority = 1, description = "Home task")
     @Description("Home task - test")
     public void homeTask() throws InterruptedException {
-        Thread.sleep(20000);
-//        Activity activity = new Activity(settingsAppPackageName, settingsAppActivityName);
-//        ((AndroidDriver<MobileElement>) driver).startActivity(activity);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        authenticationPage.typeAuthenticationCode("924799");
-//
-//        activity = new Activity(zengoAppPackageName, zengoAppActivityName);
-//        ((AndroidDriver<MobileElement>) driver).startActivity(activity);
+        mainPage = new MainPage(driver);
+        actionsPage = new ActionsPage(driver);
+        sellPage = new SellPage(driver);
+        selectCurrencyPage = new SelectCurrencyPage(driver);
+        amountPage = new AmountPage(driver);
+
 
         // Click on 'Actions' tab
         mainPage.clickOnTab("Actions");
