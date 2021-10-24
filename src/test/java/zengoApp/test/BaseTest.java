@@ -1,16 +1,15 @@
 package zengoApp.test;
 
-import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import zengoApp.pageObject.AuthenticationPage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,12 +41,9 @@ public class BaseTest {
     }
 
     @BeforeClass
-    public void typeAuthenticationPass() {
-        driver.getKeyboard().pressKey("1");
-        driver.getKeyboard().pressKey("2");
-        driver.getKeyboard().pressKey("3");
-        driver.getKeyboard().pressKey("4");
-        driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action", "search"));
+    public void typeAuthenticationPass() throws InterruptedException {
+        AuthenticationPage authenticationPage = new AuthenticationPage(driver);
+        authenticationPage.typeAuthenticationCode();
     }
 
     @AfterClass

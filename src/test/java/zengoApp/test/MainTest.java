@@ -16,7 +16,7 @@ public class MainTest extends BaseTest {
 
     @Test(priority = 1, description = "Home task")
     @Description("Home task - test")
-    public void homeTask() throws InterruptedException {
+    public void homeTask() {
         mainPage = new MainPage(driver);
         actionsPage = new ActionsPage(driver);
         sellPage = new SellPage(driver);
@@ -25,11 +25,12 @@ public class MainTest extends BaseTest {
 
 
         // Click on 'Actions' tab
-        mainPage.clickOnTab("Actions");
+        mainPage.clickOnActions();
         // Check that the user enter to actions screen
         Assert.assertEquals(actionsPage.actionTitle(), "Actions");
         // Click on sell action
         actionsPage.clickOnAction("Sell");
+
         // Check that the user enter to sell screen
         Assert.assertEquals(sellPage.sellTitle(), "Sell");
         // Click on bitcoin
@@ -37,7 +38,8 @@ public class MainTest extends BaseTest {
         // Check that the user enter to select currency screen
         Assert.assertEquals(selectCurrencyPage.selectCurrencyTitle(), "Select Currency");
         // Click on 'GBP' currency
-        selectCurrencyPage.chooseCurrency("GBP");
+        selectCurrencyPage.clickOnCurrency("GBP");
+//        selectCurrencyPage.clickOnGBPButton();
         // Check that the user enter to amount screen
         Assert.assertEquals(amountPage.amountTitle(), "Enter Amount");
         // Get the text of usd amount
@@ -49,8 +51,8 @@ public class MainTest extends BaseTest {
         // Check that the currency change after the user clicks to switch currency
         Assert.assertNotEquals(usd, coin);
         // Click on 50%
-        amountPage.clickOnKeypadButton("50%");
+        amountPage.clickOn50PercentageButton();
         // Check that the Minimum: 0.001 BTC button is disable
-        Assert.assertFalse(amountPage.checkIfKeypadButtonIsEnable("Minimum: 0.001 BTC"));
+        Assert.assertFalse(amountPage.checkIfKeypadButtonIsEnable());
     }
 }

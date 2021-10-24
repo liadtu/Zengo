@@ -3,10 +3,8 @@ package zengoApp.pageObject;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
-import org.openqa.selenium.support.PageFactory;
 
 public class SellPage extends BasePage {
     public SellPage(AppiumDriver<MobileElement> driver) {
@@ -16,7 +14,7 @@ public class SellPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@text='Sell']")
     @iOSXCUITFindBy()
     protected MobileElement sellTitle;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup")
+    @AndroidFindBy(xpath = "//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup")
     @iOSXCUITFindBy()
     protected MobileElement bitcoinButton;
 
